@@ -8,7 +8,7 @@
 
 <br>
 
-Projeto Interdisciplinar Fatec Matão - O projeto se resume em um ambiente virtual que busca dar visibilidade a pequenos coletores de resíduos e incentivar e influenciar positivamente na sociedade focando em Sustentabilidade e Meio Ambiente
+<strong>Projeto Interdisciplinar Fatec Matão</strong> - O projeto se resume em um ambiente virtual que busca dar visibilidade a pequenos coletores de resíduos e incentivar e influenciar positivamente na sociedade focando em Sustentabilidade e Meio Ambiente
 
 ## Informações Gerais
 
