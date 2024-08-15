@@ -9,3 +9,17 @@
 <br>
 
 Projeto Interdisciplinar Fatec Matão - O projeto se resume em um ambiente virtual que busca dar visibilidade a pequenos coletores de resíduos e incentivar e influenciar positivamente na sociedade focando em Sustentabilidade e Meio Ambiente
+
+## Informações Gerais
+
+<br>
+
+Abaixo estará as instruções gerais necessárias do processo de construção do projeto, porém, as instruções estão suspeitas a alterações no decorrer do desenvolvimento.
+
+<br>
+
+## Observações para o Squad
+
+<br>
+
+Devs, ao iniciar uma task e se nela for necessário codar, favor criar uma branch pessoal temporária e fazer um pull da camada 'dev' para ter a versão mais recente do código, após isso pode realizar as alterações e ações necessárias e só depois das alterações fazer um push novamente com a branch 'dev'. Se o processo for concluído com sucesso sem erros ou bugs a branch temporária pode ser exlcuída para evitar qualquer tipo de confusão.
