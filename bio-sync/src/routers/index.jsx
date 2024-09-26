@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AuthLayout } from '../layouts/auth-layout';
 import { DefaultLayout } from '../layouts/default-layout';
-import { Login } from '../pages/Login';
-import { Home } from '../pages/Home';
+import { Login } from '../pages/Login/Login';
+import { Home } from '../pages/Home/Home';
 
 function DefaultRouters() {
   return (

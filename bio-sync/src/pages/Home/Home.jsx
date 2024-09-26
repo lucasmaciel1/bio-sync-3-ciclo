@@ -1,1 +1,5 @@
-<h1>Olá mundo</h1>
+function Home (){
+    return(<h1>Home</h1>);
+
+}
+export {Home};
