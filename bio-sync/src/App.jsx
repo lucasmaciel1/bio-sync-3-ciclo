@@ -1,4 +1,4 @@
-import { DefaultRouters } from './routers';
+import { DefaultRouters } from './routers/index';
 import { AuthContextProvider } from './context/AuthContext';
  
 function App() {
