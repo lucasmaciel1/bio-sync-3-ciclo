@@ -20,7 +20,7 @@ export function EnvironmentalCausesCarousel() {
   };
 
   return (
-    <div> {/*TESTE*/}
+    <div>
       <h2 className="text-3xl font-bold mt-12 mb-6 text-center">Apoie causas ambientais</h2>
       <div className="relative flex items-center justify-center">
         <button
@@ -97,15 +97,15 @@ function Home({ openLoginModal }) {
           além disso, disponibilizar informações de maneira prática para os cidadãos.
         </p>
 
-        <div className="gap-16 flex justify-center my-24">
+        <div className="flex flex-wrap justify-center gap-8 md:gap-16 my-12 md:my-24">
           <div className="bg-white rounded-lg overflow-hidden transition-transform transform hover:scale-105 cursor-pointer">
-            <img src={cardconscientizacao} alt="card conscientizacao" className="h-40 w-40 mb-4" />
-          </div>
-          <div className="bg-white rounded-lg overflow-hidden transition-transform transform hover:scale-105 cursor-pointer ">
-            <img src={cardpontodescarte} alt="card pontodescarte" className="h-40 w-40 mb-4" />
+            <img src={cardconscientizacao} alt="card conscientizacao" className="h-32 w-32 md:h-40 md:w-40 mb-4" />
           </div>
           <div className="bg-white rounded-lg overflow-hidden transition-transform transform hover:scale-105 cursor-pointer">
-            <img src={cardagendamento} alt="card agendamento" className="h-40 w-40 mb-4" />
+            <img src={cardpontodescarte} alt="card pontodescarte" className="h-32 w-32 md:h-40 md:w-40 mb-4" />
+          </div>
+          <div className="bg-white rounded-lg overflow-hidden transition-transform transform hover:scale-105 cursor-pointer">
+            <img src={cardagendamento} alt="card agendamento" className="h-32 w-32 md:h-40 md:w-40 mb-4" />
           </div>
         </div>
         
