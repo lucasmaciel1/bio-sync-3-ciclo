@@ -68,13 +68,16 @@ function Home({ openLoginModal }) {
   const logoyoutube = '/youtube_black.png';
   const cardnoticias = '/cardConteudo.jpg';
   const cardconteudos = '/cardNoticias.jpg';
+  const userlogin = '/user.png';
 
   return (
     <div className="min-h-screen bg-gray-100  font-montserrat">
       <header className="bg-[url('/public/back-header-map-V3.jpg')] bg-center bg-cover h-32">
         <nav className="container mx-auto px-6 py-3 flex justify-between items-center">
-          <div className="flex items-center">
-            <img src={logo} alt="Logo" className="h-25 w-20 mr-2" />
+          <div className="flex items-center bg-white rounded-lg overflow-hidden transition-transform transform hover:scale-105 cursor-pointer">
+            <Link to="/" className="mx-2 text-white-1 hover:text-white-1 hover:font-bold">
+              <img src={logo} alt="Logo" className="h-25 w-20 mr-2" />
+            </Link>
           </div>
           <div className="flex items-center space-x-16">
             <Link to="/" className="mx-2 text-white-1 hover:text-white-1 hover:font-bold">Home</Link>
@@ -82,7 +85,19 @@ function Home({ openLoginModal }) {
             <Link to="/" className="mx-2 text-white-1 hover:text-white-1 hover:font-bold">Agendamento</Link>
           </div>
           <div>
-            <button onClick={openLoginModal} className="ml-4 px-4 py-2 text-white-1 rounded hover:text-white-1 hover:font-bold">Login</button>
+          <div className="flex flex-row items-center">
+            <img src={userlogin} alt="userlogin" className="h-10 w-10 mr-2" />
+            <div>
+              <p className="text-white-1">Faça
+                <button onClick={openLoginModal} className="ml-2 px-2 font-bold text-white-1 rounded  transition-transform transform hover:scale-105 cursor-pointer">Login</button> ou
+              </p>
+              <Link to="/" className="font-bold text-white-1">
+                <p className="rounded transition-transform transform hover:scale-105 cursor-pointer">
+                  Cadastre-se
+                </p>
+              </Link>
+            </div>
+          </div>
           </div>
         </nav>
       </header>
@@ -126,13 +141,13 @@ function Home({ openLoginModal }) {
 
     <h2 className="text-3xl font-bold mt-12 mb-6 text-center">Redes Sociais</h2>
         <div className="flex space-x-16 justify-center p-12">
-          <a href="/" className="text-gray-600 hover:text-gray-800">
+          <a href="/" className="bg-white rounded-lg overflow-hidden transition-transform transform hover:scale-105 cursor-pointer">
             <img src={logoinstagram} alt="Instagram" className="h-24 w-24" />
           </a>
-          <a href="/" className="text-gray-600 hover:text-gray-800">
+          <a href="/" className="bg-white rounded-lg overflow-hidden transition-transform transform hover:scale-105 cursor-pointer">
             <img src={logotiktok} alt="TikTok" className="h-24 w-24" />
           </a>
-          <a href="/" className="text-gray-600 hover:text-gray-800">
+          <a href="/" className="bg-white rounded-lg overflow-hidden transition-transform transform hover:scale-105 cursor-pointer">
             <img src={logoyoutube} alt="YouTube" className="h-24 w-24" />
           </a>
         </div>
