@@ -16,7 +16,7 @@ module.exports = {
         1: '#D9D9D9',
       },
       white:{
-        1:'#FFFFFF',
+        1:'#EEEEEE',
       },
     },
     screens: {

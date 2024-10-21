@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home/Home.jsx';
+import ButtonsUserRegister from './pages/Register/ButtonsUserRegister.jsx';
 import LoginModal from './components/LoginModal';
 
 
@@ -12,6 +13,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home openLoginModal={() => setIsLoginModalOpen(true)} />} />
+          <Route path="/buttonsUserRegister" element={<ButtonsUserRegister />} />
         </Routes>
         <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
       </div>
