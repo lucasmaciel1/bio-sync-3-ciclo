@@ -14,8 +14,8 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home openLoginModal={() => setIsLoginModalOpen(true)} />} />
-          <Route path="/buttonsUserRegister" element={<ButtonsUserRegister />} />
-          <Route path="/dropPoints" element={<PontosDeDescarte />} />
+          <Route path="/buttonsUserRegister" element={<ButtonsUserRegister openLoginModal={() => setIsLoginModalOpen(true)} />} />
+          <Route path="/dropPoints" element={<PontosDeDescarte openLoginModal={() => setIsLoginModalOpen(true)} />} />
         </Routes>
         <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
       </div>
