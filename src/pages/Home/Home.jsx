@@ -86,7 +86,7 @@ export default function Home({ openLoginModal }) {
             </Link>
             <div className="hidden sm:flex space-x-4 lg:space-x-8">
               <Link to="/" className="text-white-1 hover:text-white-1 hover:font-bold">Home</Link>
-              <Link to="/" className="text-white-1 hover:text-white-1 hover:font-bold">Pontos de Descarte</Link>
+              <Link to="/dropPoints" className="text-white-1 hover:text-white-1 hover:font-bold">Pontos de Descarte</Link>
               <Link to="/" className="text-white-1 hover:text-white-1 hover:font-bold">Agendamento</Link>
             </div>
             <div className="hidden sm:flex items-center">
@@ -114,7 +114,7 @@ export default function Home({ openLoginModal }) {
           {isMenuOpen && (
             <div className="mt-4 sm:hidden">
               <Link to="/" className="block text-white-1 py-2">Home</Link>
-              <Link to="/" className="block text-white-1 py-2">Pontos de Descarte</Link>
+              <Link to="/dropPoints" className="block text-white-1 py-2">Pontos de Descarte</Link>
               <Link to="/" className="block text-white-1 py-2">Agendamento</Link>
               <button onClick={openLoginModal} className="block text-white-1 py-2 font-bold">Login</button>
               <Link to="/" className="block text-white-1 py-2 font-bold">Cadastre-se</Link>
