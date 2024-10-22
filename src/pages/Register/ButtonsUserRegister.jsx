@@ -7,6 +7,8 @@ export default function ButtonsUserRegister({ openLoginModal }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const logo = '/logo-bio-sync-login.png';
   const userlogin = '/user.png';
+  const imgRegister1 = '/undraw_throw_away_trash_x60k.svg'
+  const imgRegister2 = '/undraw_collecting_re_lp6p.svg'
 
   return (
     <div className="min-h-screen bg-white-1 font-montserrat">
@@ -18,7 +20,7 @@ export default function ButtonsUserRegister({ openLoginModal }) {
             </Link>
             <div className="hidden sm:flex space-x-4 lg:space-x-8">
               <Link to="/" className="text-white-1 hover:text-white-1 hover:font-bold">Home</Link>
-              <Link to="/" className="text-white-1 hover:text-white-1 hover:font-bold">Pontos de Descarte</Link>
+              <Link to="/dropPoints" className="text-white-1 hover:text-white-1 hover:font-bold">Pontos de Descarte</Link>
               <Link to="/" className="text-white-1 hover:text-white-1 hover:font-bold">Agendamento</Link>
             </div>
             <div className="hidden sm:flex items-center">
@@ -46,7 +48,7 @@ export default function ButtonsUserRegister({ openLoginModal }) {
           {isMenuOpen && (
             <div className="mt-4 sm:hidden">
               <Link to="/" className="block text-white-1 py-2">Home</Link>
-              <Link to="/" className="block text-white-1 py-2">Pontos de Descarte</Link>
+              <Link to="/dropPoints" className="block text-white-1 py-2">Pontos de Descarte</Link>
               <Link to="/" className="block text-white-1 py-2">Agendamento</Link>
               <button onClick={openLoginModal} className="block text-white-1 py-2 font-bold">Login</button>
               <Link to="/" className="block text-white-1 py-2 font-bold">Cadastre-se</Link>
@@ -58,18 +60,22 @@ export default function ButtonsUserRegister({ openLoginModal }) {
       <main className="container mx-auto px-4 sm:px-6 py-8">
       <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white-1 p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-4">Receptor/Catador</h2>
-            <p className="mb-4">Faça o cadastro para ter acesso total</p>
-            <img src="/receptor-catador.png" alt="Receptor/Catador" className="mb-4 mx-auto" />
-            <button className="w-full bg-green-1 text-white-1 py-2 px-4 rounded hover:bg-opacity-90 transition duration-300">
+            <h2 className="text-2xl font-bold mb-4 text-center">Receptor/Catador</h2>
+            <p className="mb-4 text-center">Faça seu cadastro para ter acesso total</p>
+            <Link className="flex items-center rounded-lg overflow-hidden transition-transform transform hover:scale-105">
+              <img src={imgRegister1} alt="Receptor/Catador" className="mb-4 mx-auto" />
+            </Link>
+            <button to='/' className="w-full bg-green-1 text-white-1 py-2 px-4 rounded hover:bg-opacity-90 transition duration-300">
               Cadastrar-se
             </button>
           </div>
           <div className="bg-white-1 p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-4">Ponto De Descarte</h2>
-            <p className="mb-4">Cadastre sua residência ou comércio</p>
-            <img src="/ponto-de-descarte.png" alt="Ponto De Descarte" className="mb-4 mx-auto" />
-            <button className="w-full bg-green-1 text-white-1 py-2 px-4 rounded hover:bg-opacity-90 transition duration-300">
+            <h2 className="text-2xl font-bold mb-4 text-center">Ponto De Descarte</h2>
+            <p className="mb-4 text-center">Cadastre sua residência ou comércio para realizarem o descarte</p>
+            <Link className="flex items-center rounded-lg overflow-hidden transition-transform transform hover:scale-105">
+              <img src={imgRegister2} alt="Receptor/Catador" className="mb-4 mx-auto" />
+            </Link>
+            <button to='/' className="w-full bg-green-1 text-white-1 py-2 px-4 rounded hover:bg-opacity-90 transition duration-300">
               Cadastrar Ponto de Descarte
             </button>
           </div>
