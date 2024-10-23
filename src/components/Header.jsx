@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu } from 'lucide-react';
-
 export default function Header({ openLoginModal }){
 const [isMenuOpen, setIsMenuOpen] = useState(false);
 const logo = '/logo-bio-sync-login.png';    
