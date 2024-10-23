@@ -191,12 +191,14 @@ export default function PontosDeDescarte() {
     setSearchTerm(e.target.value);
   };
 
-  const filteredPontos = useMemo(() => {
+  const stableFilters = useMemo(() => filters, [filters]);
+
+const filteredPontos = useMemo(() => {
     return pontosDeDescarte.filter(ponto => {
       const matchesSearch = ponto.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
                             ponto.endereco.toLowerCase().includes(searchTerm.toLowerCase());
       
-      const matchesFilters = Object.entries(filters).every(([key, value]) => {
+      const matchesFilters = Object.entries(stableFilters).every(([key, value]) => {
         if (!value) return true; // Skip empty filters
         if (key === 'material') {
           return ponto.materiais.includes(value);
@@ -206,7 +208,8 @@ export default function PontosDeDescarte() {
 
       return matchesSearch && matchesFilters;
     });
-  }, [pontosDeDescarte, searchTerm, filters]);
+    
+  }, [pontosDeDescarte, searchTerm, stableFilters]);
 
   // Generate unique options for each filter
   const filterOptions = {

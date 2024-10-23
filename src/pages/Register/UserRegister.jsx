@@ -109,7 +109,6 @@ export default function CadastroUsuario() {
         <div className="w-full max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
           <div className="p-6 space-y-6">
             <div className="flex justify-center items-center space-x-4">
-              <img src={logo} alt="Logo" className="h-12 w-auto" />
               <h2 className="text-2xl font-bold">Cadastro de usuário</h2>
             </div>
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -193,20 +192,7 @@ export default function CadastroUsuario() {
                   />
                 </div>
               </div>
-              <div className="space-y-2">
-                <label htmlFor="documento" className="block text-sm font-medium text-gray-700">RG/CNH</label>
-                <input
-                  id="documento"
-                  type="file"
-                  onChange={handleFileChange}
-                  accept="image/*"
-                  className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm
-                             file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0
-                             file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700
-                             hover:file:bg-blue-100 cursor-pointer"
-                />
-                {file && <p className="text-sm text-green-600 mt-1">Arquivo selecionado: {file.name}</p>}
-              </div>
+              
               {erro && (
                 <div className="flex items-center space-x-2 text-red-600 text-sm">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
