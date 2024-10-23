@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 
 
+
 export default function ButtonsUserRegister({ openLoginModal }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const logo = '/logo-bio-sync-login.png';
@@ -62,10 +63,10 @@ export default function ButtonsUserRegister({ openLoginModal }) {
           <div className="bg-white-1 p-6 rounded-lg shadow-lg">
             <h2 className="text-2xl font-bold mb-4 text-center">Receptor/Catador</h2>
             <p className="mb-4 text-center">Faça seu cadastro para ter acesso total</p>
-            <Link className="flex items-center rounded-lg overflow-hidden transition-transform transform hover:scale-105">
+            <Link to="/UserRegister" className="flex items-center rounded-lg overflow-hidden transition-transform transform hover:scale-105">
               <img src={imgRegister1} alt="Receptor/Catador" className="mb-4 mx-auto" />
             </Link>
-            <button to='/' className="w-full bg-green-1 text-white-1 py-2 px-4 rounded hover:bg-opacity-90 transition duration-300">
+            <button to className="w-full bg-green-1 text-white-1 py-2 px-4 rounded hover:bg-opacity-90 transition duration-300">
               Cadastrar-se
             </button>
           </div>

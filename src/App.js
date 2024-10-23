@@ -4,6 +4,7 @@ import Home from './pages/Home/Home.jsx';
 import ButtonsUserRegister from './pages/Register/ButtonsUserRegister.jsx';
 import PontosDeDescarte from './pages/dropPoints/PontosDeDescarte.jsx';
 import LoginModal from './components/LoginModal';
+import RegistroDeUsuarios from './pages/Register/UserRegister.jsx'
 
 
 function App() {
@@ -14,8 +15,9 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home openLoginModal={() => setIsLoginModalOpen(true)} />} />
-          <Route path="/buttonsUserRegister" element={<ButtonsUserRegister openLoginModal={() => setIsLoginModalOpen(true)} />} />
-          <Route path="/dropPoints" element={<PontosDeDescarte openLoginModal={() => setIsLoginModalOpen(true)} />} />
+          <Route path="/buttonsUserRegister" element={<ButtonsUserRegister />} />
+          <Route path="/dropPoints" element={<PontosDeDescarte />} />
+          <Route path="/UserRegister" element={<RegistroDeUsuarios/>} />
         </Routes>
         <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
       </div>
