@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-route
 import Home from './pages/Home/Home.jsx';
 import ButtonsUserRegister from './pages/Register/ButtonsUserRegister.jsx';
 import PontosDeDescarte from './pages/dropPoints/PontosDeDescarte.jsx';
-import LoginModal from './components/LoginModal';
+import LoginModal from './components/LoginModal.jsx';
 import RegistroDeUsuarios from './pages/Register/UserRegister.jsx';
-import Header from './components/Header'; // Importando o Header
+import Header from './components/Header.jsx'; // Importando o Header
 import Footer from './components/Footer.jsx';
 import Agendamentos from './pages/Agendamentos/Agendamentos.jsx'
 

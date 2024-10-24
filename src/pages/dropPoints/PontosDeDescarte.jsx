@@ -167,25 +167,42 @@ export default function PontosDeDescarte() {
       periodo: 'Manhã',
     },
   ];
-
+  
   const handleFilterChange = (e) => {
-    setFilters({ ...filters, [e.target.name]: e.target.value });
+    setFilters({  [e.target.name]: e.target.value });
   };
 
-  const applyFilters = () => {
-    // Filter logic is now handled by the useMemo hook
-    console.log('Filters applied:', filters);
-  };
+  const [filteredPontos, setFilteredPontos] = useState(pontosDeDescarte); // Inicia com todos os pontos
 
-  const clearFilters = () => {
-    setFilters({
-      material: '',
-      estado: '',
-      cidade: '',
-      bairro: '',
-      periodo: '',
+const applyFilters = () => {
+  const filtered = pontosDeDescarte.filter(ponto => {
+    const matchesSearch = ponto.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          ponto.endereco.toLowerCase().includes(searchTerm.toLowerCase());
+    
+    const matchesFilters = Object.entries(filters).every(([key, value]) => {
+      if (!value) return true; // Ignora filtros vazios
+      if (key === 'material') {
+        return ponto.materiais.includes(value);
+      }
+      return ponto[key] === value;
     });
-  };
+
+    return matchesSearch && matchesFilters;
+  });
+
+  setFilteredPontos(filtered); // Atualiza os pontos filtrados após clicar no botão
+};
+
+const clearFilters = () => {
+  setFilters({
+    material: '',
+    estado: '',
+    cidade: '',
+    bairro: '',
+    periodo: '',
+  });
+  setFilteredPontos(pontosDeDescarte); // Reseta para mostrar todos os pontos ao limpar
+};
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
@@ -193,23 +210,7 @@ export default function PontosDeDescarte() {
 
   const stableFilters = useMemo(() => filters, [filters]);
 
-const filteredPontos = useMemo(() => {
-    return pontosDeDescarte.filter(ponto => {
-      const matchesSearch = ponto.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                            ponto.endereco.toLowerCase().includes(searchTerm.toLowerCase());
-      
-      const matchesFilters = Object.entries(stableFilters).every(([key, value]) => {
-        if (!value) return true; // Skip empty filters
-        if (key === 'material') {
-          return ponto.materiais.includes(value);
-        }
-        return ponto[key] === value;
-      });
 
-      return matchesSearch && matchesFilters;
-    });
-    
-  }, [pontosDeDescarte, searchTerm, stableFilters]);
 
   // Generate unique options for each filter
   const filterOptions = {
@@ -257,9 +258,6 @@ const filteredPontos = useMemo(() => {
                           <option key={index} value={option}>{option}</option>
                         ))}
                       </select>
-                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <ChevronDown className="h-4 w-4" />
-                      </div>
                     </div>
                   </div>
                 ))}
