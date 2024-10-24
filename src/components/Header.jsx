@@ -31,13 +31,13 @@ export default function Header({ openLoginModal }) {
     <header className="bg-back-header bg-center bg-cover">
       <nav className="container mx-auto px-4 sm:px-6 py-4">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center rounded-lg overflow-hidden transition-transform transform hover:scale-105">
-            <img src={logo} alt="Logo" className="h-12 w-12 sm:h-16 sm:w-16" />
+          <Link to="/" className="flex items-center h-16 w-14 rounded-lg overflow-hidden transition-transform transform hover:scale-105">
+            <img src={logo} alt="Logo" className="sm:h-16 sm:w-16" />
           </Link>
           <div className="hidden sm:flex space-x-4 lg:space-x-8">
             <Link to="/" className="text-white-1 hover:text-white-1 hover:font-bold">Home</Link>
             <Link to="/dropPoints" className="text-white-1 hover:text-white-1 hover:font-bold">Pontos de Descarte</Link>
-            <Link to="/" className="text-white-1 hover:text-white-1 hover:font-bold">Agendamento</Link>
+            <Link to="/Agendamentos" className="text-white-1 hover:text-white-1 hover:font-bold">Agendamento</Link>
           </div>
           <div className="hidden sm:flex items-center">
             {user ? (
@@ -88,7 +88,7 @@ export default function Header({ openLoginModal }) {
           <div className="mt-4 sm:hidden">
             <Link to="/" className="block text-white-1 py-2">Home</Link>
             <Link to="/dropPoints" className="block text-white-1 py-2">Pontos de Descarte</Link>
-            <Link to="/" className="block text-white-1 py-2">Agendamento</Link>
+            <Link to="/Agendamentos" className="block text-white-1 py-2">Agendamento</Link>
             {user ? (
               // Logged-in state for mobile menu
               <>
