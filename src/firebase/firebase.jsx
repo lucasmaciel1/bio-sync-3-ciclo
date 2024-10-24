@@ -1,6 +1,7 @@
 // src/firebase.js
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 
 const firebaseConfig = {
@@ -24,4 +25,6 @@ initializeAppCheck(app, {
 // Initialize Firebase Authentication
 const auth = getAuth(app);
 
-export { auth };
+const db = getFirestore(app);
+
+export { auth, db };
