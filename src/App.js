@@ -7,6 +7,7 @@ import LoginModal from './components/LoginModal';
 import RegistroDeUsuarios from './pages/Register/UserRegister.jsx';
 import Header from './components/Header'; // Importando o Header
 import Footer from './components/Footer.jsx';
+import Agendamentos from './pages/Agendamentos/Agendamentos.jsx'
 
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -20,6 +21,7 @@ function App() {
           <Route path="/buttonsUserRegister" element={<ButtonsUserRegister openLoginModal={() => setIsLoginModalOpen(true)} />} />
           <Route path="/dropPoints" element={<PontosDeDescarte openLoginModal={() => setIsLoginModalOpen(true)} />} />
           <Route path="/UserRegister" element={<RegistroDeUsuarios openLoginModal={() => setIsLoginModalOpen(true)} />} />
+          <Route path="/Agendamentos" element={<Agendamentos openLoginModal={() => setIsLoginModalOpen(true)} />} />
         </Routes>
         <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
         <ConditionalFooter />
@@ -30,7 +32,7 @@ function App() {
 
 function ConditionalHeader({ openLoginModal }) {
   const location = useLocation();
-  const showHeaderRoutes = ['/' ,'/UserRegister', '/buttonsUserRegister' , '/dropPoints' ]; // Rotas onde o Header deve ser exibido
+  const showHeaderRoutes = ['/' ,'/UserRegister', '/buttonsUserRegister' , '/dropPoints', '/Agendamentos' ]; // Rotas onde o Header deve ser exibido
 
   return showHeaderRoutes.includes(location.pathname) ? (
     <Header openLoginModal={openLoginModal} />
@@ -39,7 +41,7 @@ function ConditionalHeader({ openLoginModal }) {
 
 function ConditionalFooter() {
   const location = useLocation();
-  const showFooterRoutes = ['/' ,'/UserRegister', '/buttonsUserRegister' , '/dropPoints']; 
+  const showFooterRoutes = ['/' ,'/UserRegister', '/buttonsUserRegister' , '/dropPoints', '/Agendamentos']; 
 
   return showFooterRoutes.includes(location.pathname) ? (
     <Footer />
