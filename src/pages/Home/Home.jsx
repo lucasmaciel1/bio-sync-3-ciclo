@@ -91,13 +91,19 @@ export default function Home({ openLoginModal }) {
 
         <div className="flex flex-wrap justify-center gap-6 sm:gap-8 lg:gap-16 my-8 sm:my-12 lg:my-24">
           <div className="bg-white-1 rounded-lg overflow-hidden transition-transform transform hover:scale-105 cursor-pointer">
+            <Link to={'/'}>
             <img src={cardconscientizacao} alt="card conscientizacao" className="h-24 w-24 sm:h-32 sm:w-32 lg:h-40 lg:w-40" />
+            </Link>
           </div>
           <div className="bg-white-1 rounded-lg overflow-hidden transition-transform transform hover:scale-105 cursor-pointer">
+            <Link to={'/dropPoints'}>
             <img src={cardpontodescarte} alt="card pontodescarte" className="h-24 w-24 sm:h-32 sm:w-32 lg:h-40 lg:w-40" />
+            </Link>
           </div>
           <div className="bg-white-1 rounded-lg overflow-hidden transition-transform transform hover:scale-105 cursor-pointer">
+            <Link to={'/Agendamentos'}>
             <img src={cardagendamento} alt="card agendamento" className="h-24 w-24 sm:h-32 sm:w-32 lg:h-40 lg:w-40" />
+            </Link>
           </div>
         </div>
         
