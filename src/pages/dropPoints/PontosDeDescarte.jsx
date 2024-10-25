@@ -1,8 +1,8 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Search, ChevronDown, X, User, Lock } from 'lucide-react';
+import { Menu, Search, ChevronDown, X, User, Lock, ChevronLeft, ChevronRight } from 'lucide-react';
 
-// Modal component for disposal point details
+// DisposalPointModal component remains unchanged
 const DisposalPointModal = ({ point, isOpen, onClose }) => {
   if (!isOpen) return null;
 
@@ -28,7 +28,7 @@ const DisposalPointModal = ({ point, isOpen, onClose }) => {
   );
 };
 
-// Login Modal component
+// LoginModal component remains unchanged
 const LoginModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
@@ -109,6 +109,8 @@ export default function PontosDeDescarte() {
   });
 
   const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const pointsPerPage = 5;
 
   const pontosDeDescarte = [
     {
@@ -166,60 +168,121 @@ export default function PontosDeDescarte() {
       bairro: 'Vila Nova',
       periodo: 'Manhã',
     },
+    {
+      id: 6,
+      nome: 'Recicla Bem Rio',
+      endereco: 'Av. Brasil, 1500 - Bonsucesso - Rio de Janeiro/RJ',
+      materiais: ['Plástico', 'Papel', 'Metal', 'Vidro'],
+      descricao: 'Ponto de coleta comunitário com foco em educação ambiental. Realizamos oficinas de reciclagem.',
+      estado: 'Rio de Janeiro',
+      cidade: 'Rio de Janeiro',
+      bairro: 'Bonsucesso',
+      periodo: 'Tarde',
+    },
+    {
+      id: 7,
+      nome: 'EcoVida Belo Horizonte',
+      endereco: 'Rua dos Carijós, 150 - Centro - Belo Horizonte/MG',
+      materiais: ['Orgânicos', 'Plástico', 'Papel'],
+      descricao: 'Especializada em compostagem e reciclagem de materiais orgânicos. Oferecemos workshops de compostagem doméstica.',
+      estado: 'Minas Gerais',
+      cidade: 'Belo Horizonte',
+      bairro: 'Centro',
+      periodo: 'Manhã',
+    },
+    {
+      id: 8,
+      nome: 'Recicla Nordeste',
+      endereco: 'Av. Domingos Ferreira, 2160 - Boa Viagem - Recife/PE',
+      materiais: ['Plástico', 'Metal', 'Eletrônicos'],
+      descricao: 'Ponto de coleta especializado em resíduos eletrônicos e plásticos. Parcerias com empresas locais para reciclagem responsável.',
+      estado: 'Pernambuco',
+      cidade: 'Recife',
+      bairro: 'Boa Viagem',
+      periodo: 'Integral',
+    },
+    {
+      id: 9,
+      nome: 'Eco Amazônia',
+      endereco: 'Av. Eduardo Ribeiro, 520 - Centro - Manaus/AM',
+      materiais: ['Orgânicos', 'Plástico', 'Papel', 'Metal'],
+      descricao: 'Cooperativa focada na reciclagem de resíduos da região amazônica. Projetos de conscientização ambiental para comunidades ribeirinhas.',
+      estado: 'Amazonas',
+      cidade: 'Manaus',
+      bairro: 'Centro',
+      periodo: 'Manhã',
+    },
+    {
+      id: 10,
+      nome: 'Recicla Sul',
+      endereco: 'Rua Voluntários da Pátria, 39 - Centro - Porto Alegre/RS',
+      materiais: ['Vidro', 'Metal', 'Papel', 'Plástico'],
+      descricao: 'Centro de reciclagem com foco em logística reversa. Parcerias com indústrias locais para reaproveitamento de materiais.',
+      estado: 'Rio Grande do Sul',
+      cidade: 'Porto Alegre',
+      bairro: 'Centro',
+      periodo: 'Integral',
+    },
   ];
   
   const handleFilterChange = (e) => {
-    setFilters({  [e.target.name]: e.target.value });
+    setFilters(prevFilters => ({
+      ...prevFilters,
+      [e.target.name]: e.target.value
+    }));
+    setCurrentPage(1); // Reset to first page when filters change
   };
 
-  const [filteredPontos, setFilteredPontos] = useState(pontosDeDescarte); // Inicia com todos os pontos
+  const [filteredPontos, setFilteredPontos] = useState(pontosDeDescarte);
 
-const applyFilters = () => {
-  const filtered = pontosDeDescarte.filter(ponto => {
-    const matchesSearch = ponto.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          ponto.endereco.toLowerCase().includes(searchTerm.toLowerCase());
-    
-    const matchesFilters = Object.entries(filters).every(([key, value]) => {
-      if (!value) return true; // Ignora filtros vazios
-      if (key === 'material') {
-        return ponto.materiais.includes(value);
-      }
-      return ponto[key] === value;
+  useEffect(() => {
+    applyFilters();
+  }, [filters, searchTerm]);
+
+  const applyFilters = () => {
+    const filtered = pontosDeDescarte.filter(ponto => {
+      const matchesSearch = ponto.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                            ponto.endereco.toLowerCase().includes(searchTerm.toLowerCase());
+      
+      const matchesFilters = Object.entries(filters).every(([key, value]) => {
+        if (!value) return true; // Ignore empty filters
+        if (key === 'material') {
+          return ponto.materiais.some(material => material.toLowerCase().includes(value.toLowerCase()));
+        }
+        return ponto[key].toLowerCase().includes(value.toLowerCase());
+      });
+
+      return matchesSearch && matchesFilters;
     });
 
-    return matchesSearch && matchesFilters;
-  });
+    setFilteredPontos(filtered);
+    setCurrentPage(1); // Reset to first page when filters are applied
+  };
 
-  setFilteredPontos(filtered); // Atualiza os pontos filtrados após clicar no botão
-};
-
-const clearFilters = () => {
-  setFilters({
-    material: '',
-    estado: '',
-    cidade: '',
-    bairro: '',
-    periodo: '',
-  });
-  setFilteredPontos(pontosDeDescarte); // Reseta para mostrar todos os pontos ao limpar
-};
+  const clearFilters = () => {
+    setFilters({
+      material: '',
+      estado: '',
+      cidade: '',
+      bairro: '',
+      periodo: '',
+    });
+    setSearchTerm('');
+    setCurrentPage(1); // Reset to first page when filters are cleared
+  };
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
+    setCurrentPage(1); // Reset to first page when search term changes
   };
 
-  const stableFilters = useMemo(() => filters, [filters]);
-
-
-
-  // Generate unique options for each filter
-  const filterOptions = {
+  const filterOptions = useMemo(() => ({
     material: [...new Set(pontosDeDescarte.flatMap(p => p.materiais))],
     estado: [...new Set(pontosDeDescarte.map(p => p.estado))],
     cidade: [...new Set(pontosDeDescarte.map(p => p.cidade))],
     bairro: [...new Set(pontosDeDescarte.map(p => p.bairro))],
     periodo: [...new Set(pontosDeDescarte.map(p => p.periodo))],
-  };
+  }), [pontosDeDescarte]);
 
   const openLoginModal = () => {
     setIsLoginModalOpen(true);
@@ -229,14 +292,20 @@ const clearFilters = () => {
     setIsLoginModalOpen(false);
   };
 
+  // Pagination logic
+  const indexOfLastPoint = currentPage * pointsPerPage;
+  const indexOfFirstPoint = indexOfLastPoint - pointsPerPage;
+  const currentPoints = filteredPontos.slice(indexOfFirstPoint, indexOfLastPoint);
+  const totalPages = Math.ceil(filteredPontos.length / pointsPerPage);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div className="min-h-screen bg-white-1 font-montserrat">
- 
-
       <main className="container mx-auto px-4 sm:px-6 py-8">
         <h1 className="text-3xl font-bold mb-8 text-center">Pontos de Descarte</h1>
         <div className="flex flex-col md:flex-row gap-8">
-          <div className="w-full md:w-1/3">
+          <div className="w-full  md:w-1/3">
             <div className="bg-gray-1 p-4 rounded-lg">
               <h2 className="text-xl font-semibold mb-4">Filtros</h2>
               <div className="space-y-4">
@@ -265,7 +334,7 @@ const clearFilters = () => {
               <div className="mt-6 flex gap-4">
                 <button
                   onClick={applyFilters}
-                  className="w-full bg-green-1 text-white-1 py-2  px-4 rounded hover:bg-opacity-90 transition duration-300"
+                  className="w-full bg-green-1 text-white-1 py-2 px-4 rounded hover:bg-opacity-90 transition duration-300"
                 >
                   Filtrar
                 </button>
@@ -290,7 +359,7 @@ const clearFilters = () => {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
             </div>
             <div className="space-y-4">
-              {filteredPontos.map((ponto) => (
+              {currentPoints.map((ponto) => (
                 <div 
                   key={ponto.id} 
                   className="bg-white-1 p-4 rounded-lg shadow flex items-center cursor-pointer hover:bg-gray-50 transition-colors duration-200"
@@ -305,12 +374,36 @@ const clearFilters = () => {
               ))}
             </div>
             <div className="mt-4 text-center text-gray-600">
-              Exibindo {filteredPontos.length} de {pontosDeDescarte.length} resultados
+              Exibindo {indexOfFirstPoint + 1}-{Math.min(indexOfLastPoint, filteredPontos.length)} de {filteredPontos.length} resultados
             </div>
-            <div className="mt-4 flex justify-center">
-              <button className="mx-1 px-3 py-1 bg-gray-200 rounded">1</button>
-              <button className="mx-1 px-3 py-1 bg-gray-200 rounded">2</button>
-              <button className="mx-1 px-3 py-1 bg-gray-200 rounded" aria-label="Próxima página">{'>'}</button>
+            <div className="mt-4 flex justify-center items-center space-x-2">
+              <button
+                onClick={() => paginate(currentPage - 1)}
+                disabled={currentPage === 1}
+                className="p-2 rounded-full bg-gray-200 disabled:opacity-50"
+                aria-label="Página anterior"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              {[...Array(totalPages).keys()].map((number) => (
+                <button
+                  key={number + 1}
+                  onClick={() => paginate(number + 1)}
+                  className={`px-3 py-1 rounded-md ${
+                    currentPage === number + 1 ? 'bg-green-1 text-white' : 'bg-gray-200'
+                  }`}
+                >
+                  {number + 1}
+                </button>
+              ))}
+              <button
+                onClick={() => paginate(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className="p-2 rounded-full bg-gray-200 disabled:opacity-50"
+                aria-label="Próxima página"
+              >
+                <ChevronRight size={20} />
+              </button>
             </div>
           </div>
         </div>
