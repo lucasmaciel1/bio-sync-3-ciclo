@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { collection, addDoc } from 'firebase/firestore';
 import { auth, db } from '../../firebase/firebase';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+
 
 export default function CadastroUsuario() {
   const [nome, setNome] = useState('');
@@ -15,8 +14,7 @@ export default function CadastroUsuario() {
   const [erro, setErro] = useState('');
   const [sucesso, setSucesso] = useState(false);
   const [carregando, setCarregando] = useState(false);
-  const [file, setFile] = useState(null);
-  const logo = '/logo-bio-sync-cadastro.png';
+  
 
   const validarCPF = (cpf) => {
     cpf = cpf.replace(/[^\d]+/g,'');
@@ -80,7 +78,6 @@ export default function CadastroUsuario() {
       setConfirmarSenha('');
       setCpf('');
       setCelular('');
-      setFile(null);
     } catch (error) {
       console.error('Erro ao cadastrar usuário:', error); // Log do erro
       if (error.code === 'auth/email-already-in-use') {
@@ -95,12 +92,6 @@ export default function CadastroUsuario() {
     }
   };
   
-
-  const handleFileChange = (event) => {
-    if (event.target.files) {
-      setFile(event.target.files[0]);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
@@ -222,7 +213,6 @@ export default function CadastroUsuario() {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, Menu } from 'lucide-react';
+import { HashLink } from 'react-router-hash-link';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const causes = [
   { name: 'IBAMA', logo: '/ibamacausa.png', url: '' },
@@ -63,9 +64,7 @@ function EnvironmentalCausesCarousel() {
   );
 }
 
-export default function Home({ openLoginModal }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const logo = '/logo-bio-sync-login.png';
+export default function Home() {
   const cardconscientizacao = '/Cerebro.png';
   const cardpontodescarte = '/PontoDescarte.png';
   const cardagendamento = '/Agendamento.png';
@@ -74,7 +73,7 @@ export default function Home({ openLoginModal }) {
   const logoyoutube = '/youtube_black.png';
   const cardnoticias = '/cardConteudo.jpg';
   const cardconteudos = '/cardNoticias.jpg';
-  const userlogin = '/user.png';
+ 
 
   return (
     <div className="min-h-screen bg-white-1 font-montserrat">
@@ -91,9 +90,9 @@ export default function Home({ openLoginModal }) {
 
         <div className="flex flex-wrap justify-center gap-6 sm:gap-8 lg:gap-16 my-8 sm:my-12 lg:my-24">
           <div className="bg-white-1 rounded-lg overflow-hidden transition-transform transform hover:scale-105 cursor-pointer">
-            <Link to={'/'}>
+            <HashLink to={'/#Conscientização'}>
             <img src={cardconscientizacao} alt="card conscientizacao" className="h-24 w-24 sm:h-32 sm:w-32 lg:h-40 lg:w-40" />
-            </Link>
+            </HashLink>
           </div>
           <div className="bg-white-1 rounded-lg overflow-hidden transition-transform transform hover:scale-105 cursor-pointer">
             <Link to={'/dropPoints'}>
@@ -135,27 +134,31 @@ export default function Home({ openLoginModal }) {
           </a>
         </div>
 
-        <div className="bg-back-ambiente-conscientizacao bg-center bg-cover p-4 sm:p-8 text-white-1 box-border mt-8 sm:mt-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-left mb-6 sm:mb-8">Ambiente de Conscientização</h2>
+        <div id="Conscientização" className="bg-back-ambiente-conscientizacao bg-center bg-cover p-4 sm:p-8 text-white-1 box-border mt-8 sm:mt-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-left mb-6 sm:mb-8" >Ambiente de Conscientização</h2>
           <div className="flex flex-col sm:flex-row justify-center sm:space-x-8 lg:space-x-24 space-y-6 sm:space-y-0">
             <div className="text-center">
               <h3 className="text-xl font-semibold mb-2">Conteúdos</h3>
               <div className="relative w-48 h-64 sm:w-56 sm:h-72 lg:w-64 lg:h-80 mx-auto overflow-hidden rounded-lg border-4 border-white-1 transition-colors duration-300 hover:border-green-1 cursor-pointer">
+                <Link to={'/Conteudos'}>
                 <img
                   src={cardconteudos}
                   alt="Conteúdos"
                   className="object-cover w-full h-full"
                 />
+                </Link>
               </div>
             </div>
             <div className="text-center">
               <h3 className="text-xl font-semibold mb-2">Notícias</h3>
               <div className="relative w-48 h-64 sm:w-56 sm:h-72 lg:w-64 lg:h-80 mx-auto overflow-hidden rounded-lg border-4 border-white-1 transition-colors duration-300 hover:border-green-1 cursor-pointer">
+                <Link to={'/Noticias'}>
                 <img
                   src={cardnoticias}
                   alt="Notícias"
                   className="object-cover w-full h-full"
                 />
+                </Link>
               </div>
             </div>
           </div>
