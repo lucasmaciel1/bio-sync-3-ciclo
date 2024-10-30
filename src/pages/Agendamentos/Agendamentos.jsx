@@ -10,7 +10,7 @@ const appointments = [
     city: "São Paulo",
     state: "SP",
     availableTimes: ["08:00", "10:00", "14:00", "16:00"],
-    imageUrl: '/placeholder.svg?height=150&width=150'
+    imageUrl: '/cardConteudo.jpg'
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const appointments = [
     city: "Rio de Janeiro",
     state: "RJ",
     availableTimes: ["09:00", "11:00", "15:00", "17:00"],
-    imageUrl: '/placeholder.svg?height=150&width=150'
+    imageUrl: '/cardConteudo.jpg'
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const appointments = [
     city: "Belo Horizonte",
     state: "MG",
     availableTimes: ["10:00", "13:00", "16:00", "18:00"],
-    imageUrl: '/placeholder.svg?height=150&width=150'
+    imageUrl: '/cardConteudo.jpg'
   },
   {
     id: 4,
@@ -40,7 +40,7 @@ const appointments = [
     city: "Curitiba",
     state: "PR",
     availableTimes: ["07:00", "09:00", "11:00", "13:00"],
-    imageUrl: '/placeholder.svg?height=150&width=150'
+    imageUrl: '/cardConteudo.jpg'
   },
   {
     id: 5,
@@ -50,7 +50,7 @@ const appointments = [
     city: "Salvador",
     state: "BA",
     availableTimes: ["10:00", "14:00", "18:00"],
-    imageUrl: '/placeholder.svg?height=150&width=150'
+    imageUrl: '/cardConteudo.jpg'
   },
   // ... (other appointments)
 ];
@@ -139,7 +139,7 @@ export default function Agendamentos() {
         </div>
 
         {selectedAppointment && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="fixed inset-0 bg-black-1 bg-opacity-50 flex justify-center items-center z-50">
             <div className="bg-white-1 p-6 rounded-lg max-w-md w-full border">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-2xl font-bold">{selectedAppointment.title}</h2>
