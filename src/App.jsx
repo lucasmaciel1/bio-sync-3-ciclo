@@ -11,6 +11,7 @@ import Agendamentos from './pages/Agendamentos/Agendamentos.jsx'
 import Conteudos from './pages/Conteudos/Conteudos.jsx'
 import Artigo1 from './pages/Conteudos/Artigo1.jsx'
 import Noticias from './pages/Noticias/Noticias.jsx'
+import VLibras from './components/VLibras.jsx';
 
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -31,6 +32,7 @@ function App() {
         </Routes>
         <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
         <ConditionalFooter />
+        <VLibras />
       </div>
     </Router>
   );
