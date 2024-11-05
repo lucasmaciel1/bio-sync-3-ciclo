@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, Search, ChevronDown, X, User, Lock, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import { Search, X, User, Lock, ChevronLeft, ChevronRight } from 'lucide-react';
 
-// DisposalPointModal component remains unchanged
+// DisposalPointModal component
 const DisposalPointModal = ({ point, isOpen, onClose }) => {
   if (!isOpen) return null;
 
@@ -28,7 +27,7 @@ const DisposalPointModal = ({ point, isOpen, onClose }) => {
   );
 };
 
-// LoginModal component remains unchanged
+// LoginModal component
 const LoginModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
@@ -94,11 +93,8 @@ const LoginModal = ({ isOpen, onClose }) => {
 };
 
 export default function PontosDeDescarte() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [selectedPoint, setSelectedPoint] = useState(null);
-  const logo = '/logo-bio-sync-login.png';
-  const userlogin = '/user.png';
 
   const [filters, setFilters] = useState({
     material: '',
@@ -112,7 +108,8 @@ export default function PontosDeDescarte() {
   const [currentPage, setCurrentPage] = useState(1);
   const pointsPerPage = 5;
 
-  const pontosDeDescarte = [
+  // Wrap pontosDeDescarte in its own useMemo hook
+  const pontosDeDescarte = useMemo(() => [
     {
       id: 1,
       nome: 'Panificadora Doce Sonho',
@@ -223,29 +220,25 @@ export default function PontosDeDescarte() {
       bairro: 'Centro',
       periodo: 'Integral',
     },
-  ];
-  
-  const handleFilterChange = (e) => {
+  ], []);
+
+  const handleFilterChange = useCallback((e) => {
     setFilters(prevFilters => ({
       ...prevFilters,
       [e.target.name]: e.target.value
     }));
-    setCurrentPage(1); // Reset to first page when filters change
-  };
+    setCurrentPage(1);
+  }, []);
 
   const [filteredPontos, setFilteredPontos] = useState(pontosDeDescarte);
 
-  useEffect(() => {
-    applyFilters();
-  }, [filters, searchTerm]);
-
-  const applyFilters = () => {
+  const applyFilters = useCallback(() => {
     const filtered = pontosDeDescarte.filter(ponto => {
       const matchesSearch = ponto.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
                             ponto.endereco.toLowerCase().includes(searchTerm.toLowerCase());
       
       const matchesFilters = Object.entries(filters).every(([key, value]) => {
-        if (!value) return true; // Ignore empty filters
+        if (!value) return true;
         if (key === 'material') {
           return ponto.materiais.some(material => material.toLowerCase().includes(value.toLowerCase()));
         }
@@ -256,10 +249,14 @@ export default function PontosDeDescarte() {
     });
 
     setFilteredPontos(filtered);
-    setCurrentPage(1); // Reset to first page when filters are applied
-  };
+    setCurrentPage(1);
+  }, [filters, searchTerm, pontosDeDescarte]);
 
-  const clearFilters = () => {
+  useEffect(() => {
+    applyFilters();
+  }, [applyFilters]);
+
+  const clearFilters = useCallback(() => {
     setFilters({
       material: '',
       estado: '',
@@ -268,13 +265,13 @@ export default function PontosDeDescarte() {
       periodo: '',
     });
     setSearchTerm('');
-    setCurrentPage(1); // Reset to first page when filters are cleared
-  };
+    setCurrentPage(1);
+  }, []);
 
-  const handleSearch = (e) => {
+  const handleSearch = useCallback((e) => {
     setSearchTerm(e.target.value);
-    setCurrentPage(1); // Reset to first page when search term changes
-  };
+    setCurrentPage(1);
+  }, []);
 
   const filterOptions = useMemo(() => ({
     material: [...new Set(pontosDeDescarte.flatMap(p => p.materiais))],
@@ -284,13 +281,9 @@ export default function PontosDeDescarte() {
     periodo: [...new Set(pontosDeDescarte.map(p => p.periodo))],
   }), [pontosDeDescarte]);
 
-  const openLoginModal = () => {
-    setIsLoginModalOpen(true);
-  };
-
-  const closeLoginModal = () => {
+  const closeLoginModal = useCallback(() => {
     setIsLoginModalOpen(false);
-  };
+  }, []);
 
   // Pagination logic
   const indexOfLastPoint = currentPage * pointsPerPage;
@@ -298,16 +291,16 @@ export default function PontosDeDescarte() {
   const currentPoints = filteredPontos.slice(indexOfFirstPoint, indexOfLastPoint);
   const totalPages = Math.ceil(filteredPontos.length / pointsPerPage);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = useCallback((pageNumber) => setCurrentPage(pageNumber), []);
 
   return (
     <div className="min-h-screen bg-white-1 font-montserrat">
       <main className="container mx-auto px-4 sm:px-6 py-8">
         <h1 className="text-3xl font-bold mb-8 text-center">Pontos de Descarte</h1>
         <div className="flex flex-col md:flex-row gap-8">
-          <div className="w-full  md:w-1/3">
+          <div className="w-full md:w-1/3">
             <div className="bg-gray-1 p-4 rounded-lg">
-              <h2 className="text-xl font-semibold mb-4">Filtros</h2>
+              <h2 className="text-xl  font-semibold mb-4">Filtros</h2>
               <div className="space-y-4">
                 {Object.entries(filterOptions).map(([filter, options]) => (
                   <div key={filter}>

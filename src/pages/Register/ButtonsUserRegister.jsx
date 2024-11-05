@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
+import React, {  } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu } from 'lucide-react';
 
 
 
 export default function ButtonsUserRegister({ openLoginModal }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const logo = '/logo-bio-sync-login.png';
-  const userlogin = '/user.png';
   const imgRegister1 = '/undraw_throw_away_trash_x60k.svg'
   const imgRegister2 = '/undraw_collecting_re_lp6p.svg'
 
