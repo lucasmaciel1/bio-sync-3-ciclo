@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Tema - Sustentabilidade e Meio Ambiente
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Introdução
 
-## Available Scripts
+O BioSync é uma plataforma digital criada para promover práticas ambientais sustentáveis, 
+facilitando o descarte responsável de resíduos recicláveis e conectando doadores a catadores. 
+Através dessa rede, os usuários podem descartar materiais recicláveis de forma eficiente, 
+enquanto os catadores têm acesso a recursos essenciais, otimizando a distribuição e promovendo 
+a conscientização ambiental. O objetivo é criar um sistema mais eficiente e inclusivo para o
+gerenciamento de resíduos, beneficiando tanto os indivíduos quanto a sociedade em geral.
 
-In the project directory, you can run:
+# O Que se espera? 
 
-### `npm start`
+O BioSync visa proporcionar aos catadores visibilidade e acesso a uma fonte contínua de resíduos, 
+ampliando suas oportunidades de geração de renda e melhorando suas condições de trabalho. A plataforma
+também promove a conscientização ambiental, sensibilizando a comunidade sobre a importância da reciclagem 
+e do descarte responsável, fomentando uma cultura sustentável. Além disso, busca integrar esforços individuais
+em uma iniciativa coletiva para enfrentar desafios ambientais, contribuindo para um futuro mais sustentável e equilibrado, 
+refletindo o compromisso em gerar um impacto positivo nas práticas sustentáveis, inclusão social e preservação do meio ambiente.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Objetivo Principal
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Criar uma plataforma virtual prática e eficiente para promover práticas ambientais
+sustentáveis e proporcionar melhorias significativas na vida das pessoas.
 
-### `npm test`
+# Problema
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Observamos uma lacuna no atual sistema de descarte de resíduos, onde muitos indivíduos
+estão dispostos a adotar práticas mais sustentáveis, mas enfrentam dificuldades na identificação
+de canais adequados para o descarte responsável de materiais recicláveis.
+A falta de opções acessíveis e eficientes para o descarte contribui para a perpetuação de 
+práticas não sustentáveis, resultando em impactos negativos no meio ambiente.
+Os catadores, apesar de desempenharem um papel crucial na cadeia de reciclagem, muitas
+vezes enfrentam condições adversas e falta de reconhecimento.
+A ausência de uma plataforma centralizada para conectar diretamente os catadores aos
+potenciais doadores de resíduos limita suas oportunidades, renda e visibilidade na sociedade
 
-### `npm run build`
+# Solução
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+BIOSYNC busca oferecer uma solução integral que transcende as limitações do sistema atual. 
+Concentramo-nos em proporcionar uma conexão direta entre doadores de resíduos e catadores,
+promovendo uma gestão eficiente de recursos e, ao mesmo tempo, melhorando as condições de 
+trabalho e a qualidade de vida dos catadores de resíduos.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Requisitos Não Funcionais
+ - Cadastro de Usuários
+ - Cadastro de Pontos de Descarte
+ - Visualização de Pontos de Descarte
+ - Agendamento "Quero Descartar"
+ - Agendamento do Coletor
+ - Alteração de Dados de Cadastro
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Requisitos Não-Funcionais
+ - Interface Amigável
+ - Acessibilidade
+ - Segurança
+   
+# Regras de Negocio
+ - LGPD
+ - Leis da Acessibilidade: a Lei nº
+10.098 e o Decreto nº 6.949
+ - Lei de Descarte Sustentável: Os pontos
+de descarte cadastrados devem aderir às
+regulamentações locais sobre descarte
+sustentável.
+ - Conscientização Ambiental
 
-### `npm run eject`
+# Tecnologias Aplicadas
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+ - React - Uma biblioteca de JavaScript que serve para criar interfaces de usuários para aplicativos web e móveis.
+ - Firebase - Um serviço de Back-End pronto que fornece diversos tipos de ferramentas, entre elas estão: Authentication, Firestore e Hosting.
+ - GitHub - Uma plataforma de desenvolvedor colaborativa que serve para armazenar, compartilhar e gerenciar projetos.
+ - Tailwind CSS - é um framework de estilo CSS que fornece classes pré-definidas para estilizar HTML
+   
+# Como Contribuir
+ 1. Faça um fork do repositório.
+ 2. Crie uma branch para sua feature.
+ 3. Envie um pull request para revisão.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+[Visite o site oficial do BioSync(em desenvolvimeto)] (https://biosync-32e95.firebaseapp.com/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
