@@ -42,7 +42,7 @@ Concentramo-nos em proporcionar uma conexão direta entre doadores de resíduos 
 promovendo uma gestão eficiente de recursos e, ao mesmo tempo, melhorando as condições de 
 trabalho e a qualidade de vida dos catadores de resíduos.
 
-# Requisitos Não Funcionais
+# Requisitos Funcionais
  - Cadastro de Usuários
  - Cadastro de Pontos de Descarte
  - Visualização de Pontos de Descarte
