@@ -79,7 +79,7 @@ sustentável.
 
 [Visite o site oficial do BioSync(em desenvolvimeto)] (https://biosync-32e95.firebaseapp.com/)
 
-# Tarefas de Malhoria Avaliação de DW3
+# Tarefas de Melhoria Avaliação de DW3
 ### Lista de Melhorias com Dificuldade em Escala de Fibonacci
 
 ---
